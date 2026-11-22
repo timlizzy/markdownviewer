@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Markdown Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- highlight.js -->
+  <link rel="stylesheet" id="hljs-theme"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <!-- marked -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- mermaid -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <span class="logo">&#9634; Markdown Viewer</span>
+      <span id="file-name" class="file-name"></span>
+      <span id="watch-badge" class="watch-badge" title="Auto-refreshing when file changes">&#9679; watching</span>
+    </div>
+    <div class="header-right">
+      <button id="open-btn" class="btn-primary">Open file&hellip;</button>
+      <label class="toggle-label" title="Toggle dark mode">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="toggle-track">
+          <span class="toggle-thumb"></span>
+        </span>
+      </label>
+    </div>
+  </header>
+
+  <div id="drop-zone">
+    <div class="drop-inner">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10 9 9 9 8 9"/>
+      </svg>
+      <p>Drop a <strong>.md</strong> file here, or</p>
+      <button class="btn-primary" id="drop-open-btn">choose a file</button>
+      <p class="hint">Supports Mermaid diagrams, tables, code highlighting&hellip;</p>
+    </div>
+  </div>
+
+  <main id="main" class="hidden">
+    <article id="preview" class="markdown-body"></article>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
